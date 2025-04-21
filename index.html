@@ -1,0 +1,793 @@
+Here's the complete HTML code for your improved portfolio website:
+
+html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ibrahim Shoukat | Portfolio</title>
+  <style>
+    /* Global Styles */
+    :root {
+      --primary-color: #1f66b1;
+      --secondary-color: #082032;
+      --light-bg: #f2f6fa;
+      --text-color: #333;
+      --accent-color: #0077cc;
+      --border-radius: 8px;
+      --transition: all 0.3s ease;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      color: var(--text-color);
+      background-color: var(--light-bg);
+    }
+    
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    
+    h1, h2, h3 {
+      font-weight: 700;
+      line-height: 1.2;
+      color: var(--primary-color);
+    }
+    
+    h1 {
+      font-size: 2.8rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    h2 {
+      font-size: 2rem;
+      margin: 2rem 0 1.5rem;
+      position: relative;
+      display: inline-block;
+    }
+    
+    h2::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background-color: var(--accent-color);
+      border-radius: 2px;
+    }
+    
+    h3 {
+      font-size: 1.5rem;
+      margin: 1.5rem 0 0.75rem;
+      color: var(--secondary-color);
+    }
+    
+    p {
+      margin-bottom: 1.2rem;
+      font-size: 1.1rem;
+    }
+    
+    a {
+      color: var(--accent-color);
+      text-decoration: none;
+      transition: var(--transition);
+    }
+    
+    a:hover {
+      color: var(--primary-color);
+      text-decoration: underline;
+    }
+    
+    section {
+      padding: 4rem 0;
+    }
+    
+    section:nth-child(even) {
+      background-color: white;
+    }
+    
+    img {
+      max-width: 100%;
+      border-radius: var(--border-radius);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+    
+    /* Header Styles */
+    header {
+      background-color: var(--secondary-color);
+      color: white;
+      padding: 6rem 0 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, rgba(0,119,204,0.1) 0%, rgba(31,102,177,0.2) 100%);
+      z-index: 1;
+    }
+    
+    header .container {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+    }
+    
+    header h1 {
+      color: white;
+      margin-bottom: 1rem;
+      font-size: 3.5rem;
+    }
+    
+    header p {
+      font-size: 1.3rem;
+      margin-bottom: 2rem;
+      color: rgba(255, 255, 255, 0.9);
+    }
+    
+    .links {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    
+    .links a {
+      color: white;
+      padding: 0.6rem 1.2rem;
+      border: 2px solid white;
+      border-radius: 30px;
+      font-weight: 600;
+      transition: var(--transition);
+    }
+    
+    .links a:hover {
+      background-color: white;
+      color: var(--secondary-color);
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      text-decoration: none;
+    }
+    
+    /* Navigation Bar */
+    nav {
+      background-color: var(--secondary-color);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+    
+    nav ul {
+      display: flex;
+      justify-content: center;
+      list-style: none;
+      padding: 0;
+    }
+    
+    nav li {
+      margin: 0;
+    }
+    
+    nav a {
+      display: block;
+      padding: 1rem 1.5rem;
+      color: white;
+      font-weight: 600;
+      transition: var(--transition);
+    }
+    
+    nav a:hover, nav a.active {
+      background-color: rgba(255, 255, 255, 0.1);
+      text-decoration: none;
+    }
+    
+    /* About Section */
+    .about {
+      position: relative;
+    }
+    
+    .about p {
+      font-size: 1.2rem;
+      max-width: 900px;
+      margin: 0 auto;
+      line-height: 1.8;
+    }
+    
+    /* Interests Section */
+    .interests p {
+      margin-bottom: 2rem;
+    }
+    
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+    
+    .gallery img {
+      height: 250px;
+      width: 100%;
+      object-fit: cover;
+      transition: var(--transition);
+    }
+    
+    .gallery img:hover {
+      transform: scale(1.03);
+    }
+    
+    /* Projects Section */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    
+    .project {
+      background-color: white;
+      border-radius: var(--border-radius);
+      padding: 1.5rem;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      transition: var(--transition);
+      border-top: 4px solid var(--accent-color);
+    }
+    
+    .project:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+    
+    .project h3 {
+      margin-top: 0;
+    }
+    
+    /* Blogs Section */
+    .blogs ul {
+      list-style-position: inside;
+      margin: 1.5rem 0;
+    }
+    
+    .blogs li {
+      padding: 1rem;
+      margin-bottom: 1rem;
+      background-color: white;
+      border-radius: var(--border-radius);
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+      transition: var(--transition);
+      cursor: pointer;
+    }
+    
+    .blogs li:hover {
+      transform: translateX(5px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    
+    .blogs strong {
+      color: var(--primary-color);
+    }
+    
+    /* Career Section */
+    .career {
+      background: linear-gradient(to right, #f2f6fa, white, #f2f6fa);
+    }
+    
+    .career-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+    
+    .career-card {
+      background-color: white;
+      padding: 1.5rem;
+      border-radius: var(--border-radius);
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      transition: var(--transition);
+    }
+    
+    .career-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+    }
+    
+    .career-icon {
+      font-size: 2.5rem;
+      color: var(--accent-color);
+      margin-bottom: 1rem;
+    }
+    
+    /* Contact Section */
+    .contact form {
+      max-width: 600px;
+      margin: 2rem auto 0;
+      background-color: white;
+      padding: 2rem;
+      border-radius: var(--border-radius);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+    
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+    
+    label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+    }
+    
+    input, textarea {
+      width: 100%;
+      padding: 0.8rem;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      font-family: inherit;
+      font-size: 1rem;
+      transition: var(--transition);
+    }
+    
+    input:focus, textarea:focus {
+      outline: none;
+      border-color: var(--accent-color);
+      box-shadow: 0 0 0 3px rgba(0, 119, 204, 0.2);
+    }
+    
+    button {
+      background-color: var(--accent-color);
+      color: white;
+      border: none;
+      padding: 0.8rem 2rem;
+      border-radius: 30px;
+      cursor: pointer;
+      font-size: 1rem;
+      font-weight: 600;
+      transition: var(--transition);
+    }
+    
+    button:hover {
+      background-color: var(--primary-color);
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+    
+    /* Footer Styles */
+    footer {
+      background-color: var(--secondary-color);
+      color: white;
+      text-align: center;
+      padding: 2rem 0;
+    }
+    
+    footer p {
+      margin: 0;
+    }
+
+    /* Education Section */
+    .education-item {
+      background-color: white;
+      border-radius: var(--border-radius);
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .education-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+
+    .education-logo {
+      width: 60px;
+      height: 60px;
+      object-fit: contain;
+      border-radius: 50%;
+      box-shadow: none;
+    }
+
+    .institution {
+      font-weight: bold;
+      color: var(--primary-color);
+    }
+
+    .degree {
+      font-style: italic;
+      margin: 0.5rem 0;
+    }
+
+    .duration {
+      color: #666;
+      font-size: 0.9rem;
+    }
+
+    /* Skills Section */
+    .skills-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .skill-category {
+      flex: 1;
+      min-width: 250px;
+    }
+
+    .skill-list {
+      list-style: none;
+    }
+
+    .skill-item {
+      margin-bottom: 1rem;
+      background-color: white;
+      padding: 0.8rem 1rem;
+      border-radius: var(--border-radius);
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+      position: relative;
+    }
+
+    .skill-name {
+      font-weight: 600;
+    }
+
+    .skill-level {
+      height: 6px;
+      background-color: #eee;
+      margin-top: 0.5rem;
+      border-radius: 3px;
+      overflow: hidden;
+    }
+
+    .skill-progress {
+      height: 100%;
+      background-color: var(--accent-color);
+      border-radius: 3px;
+    }
+    
+    /* Responsive styles */
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2.2rem;
+      }
+      
+      h2 {
+        font-size: 1.8rem;
+      }
+      
+      header {
+        padding: 4rem 0 3rem;
+      }
+      
+      .links {
+        flex-direction: column;
+        gap: 1rem;
+      }
+      
+      .links a {
+        width: 80%;
+        margin: 0 auto;
+      }
+      
+      nav ul {
+        flex-wrap: wrap;
+      }
+      
+      .projects-grid, .career-cards {
+        grid-template-columns: 1fr;
+      }
+      
+      section {
+        padding: 3rem 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <h1>Ibrahim Shoukat</h1>
+      <p>Economics, Philosophy, Data Science | Karachi → Boston</p>
+      <div class="links">
+        <a href="mailto:ibrahim.shoukat031@gmail.com">Email</a>
+        <a href="https://www.linkedin.com/in/ibrahim-shoukat" target="_blank">LinkedIn</a>
+        <a href="#">GitHub (Coming Soon)</a>
+      </div>
+    </div>
+  </header>
+  
+  <nav>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#interests">Interests</a></li>
+      <li><a href="#blogs">Blogs</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#career">Career</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+  
+  <section id="about" class="about">
+    <div class="container">
+      <h2>About Me</h2>
+      <p>I'm a student of Economics, Philosophy, and Data Science with an ambition to build a three-tiered web connecting behavioral insights, societal structures, and AI. My purpose is to help simplify complex decision-making processes through data-driven insight and ethical, responsible tech solutions that empower learners, creators, and communities across the globe.</p>
+    </div>
+  </section>
+
+  <section id="education">
+    <div class="container">
+      <h2>Education</h2>
+      
+      <div class="education-item">
+        <div class="education-header">
+          <div>
+            <h3>Northeastern University</h3>
+            <p class="degree">Bachelor's in Economics and Philosophy</p>
+            <p class="duration">2023 - Present</p>
+          </div>
+          <img src="/api/placeholder/60/60" alt="Northeastern University Logo" class="education-logo">
+        </div>
+        <p>Pursuing a dual major in Economics and Philosophy with a focus on data science applications. Involved in research projects examining market dynamics and ethical implications of emerging technologies.</p>
+      </div>
+      
+      <!-- Add previous education if applicable -->
+    </div>
+  </section>
+  
+  <section id="projects" class="projects">
+    <div class="container">
+      <h2>Impact Projects</h2>
+      <div class="projects-grid">
+        <div class="project">
+          <h3>Economics Press @ Northeastern</h3>
+          <p>Published impactful articles breaking down global macroeconomic issues into student-relevant stories. Topics ranged from Weimar+ to BlackRock's supply chain strategy.</p>
+        </div>
+        <div class="project">
+          <h3>Fund Marketing International (FMI)</h3>
+          <p>Developed Excel pricing models advising 179+ textile mills on cotton futures strategy. Helped mitigate risk from global supply fluctuations via ICE Futures pricing guidance.</p>
+        </div>
+        <div class="project">
+          <h3>Pakistan Agriculture Research (PAR)</h3>
+          <p>Published blogs and ran field reports leading to solar irrigation feasibility trials and chatbot-based grain pricing data solutions across rural Sindh.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <section id="interests" class="interests">
+    <div class="container">
+      <h2>Interests</h2>
+      <p>Football, running, and hiking help me push beyond mental limits. These aren't hobbies — they're reminders that resilience is learned and limitations are chosen.</p>
+      <div class="gallery">
+        <img src="/api/placeholder/400/250" alt="Football" />
+        <img src="/api/placeholder/400/250" alt="Running" />
+        <img src="/api/placeholder/400/250" alt="Hiking" />
+      </div>
+    </div>
+  </section>
+  
+  <section id="blogs" class="blogs">
+    <div class="container">
+      <h2>Featured Blogs</h2>
+      <ul>
+        <li><strong>Textile Power Shift:</strong> Pakistan vs. Bangladesh's Export Trajectory</li>
+        <li><strong>Solar & Lithium:</strong> Building Pakistan's Clean Energy Future</li>
+        <li><strong>Behavioral Economics:</strong> How Choice Architecture Shapes Market Dynamics</li>
+        <li><strong>Ethics of AI:</strong> Balancing Innovation and Responsible Development</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="container">
+      <h2>Skills</h2>
+      <div class="skills-container">
+        <div class="skill-category">
+          <h3>Economic Analysis</h3>
+          <ul class="skill-list">
+            <li class="skill-item">
+              <span class="skill-name">Market Research</span>
+              <div class="skill-level">
+                <div class="skill-progress" style="width: 90%"></div>
+              </div>
+            </li>
+            <li class="skill-item">
+              <span class="skill-name">Policy Analysis</span>
+              <div class="skill-level">
+                <div class="skill-progress" style="width: 85%"></div>
+              </div>
+            </li>
+            <li class="skill-item">
+              <span class="skill-name">Supply Chain Modeling</span>
+              <div class="skill-level">
+                <div class="skill-progress" style="width: 80%"></div>
+              </div>
+            </li>
+          </ul>
+        </div>
+        
+        <div class="skill-category">
+          <h3>Data Science</h3>
+          <ul class="skill-list">
+            <li class="skill-item">
+              <span class="skill-name">Excel Modeling</span>
+              <div class="skill-level">
+                <div class="skill-progress" style="width: 95%"></div>
+              </div>
+            </li>
+            <li class="skill-item">
+              <span class="skill-name">Statistical Analysis</span>
+              <div class="skill-level">
+                <div class="skill-progress" style="width: 85%"></div>
+              </div>
+            </li>
+            <li class="skill-item">
+              <span class="skill-name">Data Visualization</span>
+              <div class="skill-level">
+                <div class="skill-progress" style="width: 75%"></div>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <div class="skill-category">
+          <h3>Communication</h3>
+          <ul class="skill-list">
+            <li class="skill-item">
+              <span class="skill-name">Research Writing</span>
+              <div class="skill-level">
+                <div class="skill-progress" style="width: 90%"></div>
+              </div>
+            </li>
+            <li class="skill-item">
+              <span class="skill-name">Public Speaking</span>
+              <div class="skill-level">
+                <div class="skill-progress" style="width: 80%"></div>
+              </div>
+            </li>
+            <li class="skill-item">
+              <span class="skill-name">Cross-cultural Communication</span>
+              <div class="skill-level">
+                <div class="skill-progress" style="width: 85%"></div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <section id="career" class="career">
+    <div class="container">
+      <h2>Career Interests</h2>
+      <p>I'm exploring roles as a supply data planner, commodity broker, policy analyst, or regenerative agriculture researcher. I bring research-backed storytelling and system optimization to any challenge.</p>
+      
+      <div class="career-cards">
+        <div class="career-card">
+          <div class="career-icon">📊</div>
+          <h3>Supply Data Planner</h3>
+          <p>Optimizing supply chains through data-driven insights and predictive modeling</p>
+        </div>
+        <div class="career-card">
+          <div class="career-icon">💱</div>
+          <h3>Commodity Broker</h3>
+          <p>Leveraging market knowledge to facilitate strategic commodity transactions</p>
+        </div>
+        <div class="career-card">
+          <div class="career-icon">📝</div>
+          <h3>Policy Analyst</h3>
+          <p>Researching socioeconomic impacts of policies to drive evidence-based decisions</p>
+        </div>
+        <div class="career-card">
+          <div class="career-icon">🌱</div>
+          <h3>Regenerative Agriculture</h3>
+          <p>Developing sustainable farming practices through technological innovation</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="contact">
+    <div class="container">
+      <h2>Get In Touch</h2>
+      <form>
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" id="name" required>
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" required>
+        </div>
+        <div class="form-group">
+          <label for="subject">Subject</label>
+          <input type="text" id="subject">
+        </div>
+        <div class="form-group">
+          <label for="message">Message</label>
+          <textarea id="message" rows="5" required></textarea>
+        </div>
+        <button type="submit">Send Message</button>
+      </form>
+    </div>
+  </section>
+  
+  <footer>
+    <div class="container">
+      <p>© 2025 Ibrahim Shoukat. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Smooth scrolling for navigation links
+    document.querySelectorAll('nav a').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        const targetId = this.getAttribute('href');
+        const targetElement = document.querySelector(targetId);
+        
+        window.scrollTo({
+          top: targetElement.offsetTop - 60,
+          behavior: 'smooth'
+        });
+        
+        // Add active class
+        document.querySelectorAll('nav a').forEach(link => {
+          link.classList.remove('active');
+        });
+        this.classList.add('active');
+      });
+    });
+    
+    // Add active class based on scroll position
+    window.addEventListener('scroll', function() {
+      const sections = document.querySelectorAll('section');
+      const navLinks = document.querySelectorAll('nav a');
+      
+      let current = '';
+      
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop - 100;
+        const sectionHeight = section.clientHeight;
+        
+        if (pageYOffset >= sectionTop && pageYOffset < sectionTop + sectionHeight) {
+          current = '#' + section.getAttribute('id');
+        }
+      });
+      
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === current) {
+          link.classList.add('active');
+        }
+      });
+    });
+  </script>
+</body>
+</html>
